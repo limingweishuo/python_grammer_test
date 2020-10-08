@@ -1,0 +1,26 @@
+1、基本照着这个来一遍就可以了
+https://blog.csdn.net/preyta/article/details/54172961?utm_medium=distribute.pc_aggpage_search_result.none-task-blog-2~all~first_rank_v2~rank_v25-6-54172961.nonecase&utm_term=celery%E4%BC%A0%E9%80%92%E5%8F%82%E6%95%B0&spm=1000.2123.3001.4430
+
+2、如果希望能够在后台运行可以参考如下博客
+https://blog.csdn.net/rongDang/article/details/95653667
+https://blog.csdn.net/weixin_43326122/article/details/106191521
+
+********************************  01、supervisor安装  *******************************
+pip install supervisor  ||  supervisord -v
+********************************  02、supervisor配置如下  *******************************
+[program:celeryd]
+command=/opt/buildtools/python/bin/celery -A cele worker -l INFO -B --concurrency=15 --logfile=crontablog.log
+stdout_logfile=/data/lwx898295/celery_test/time_sche/celeryd.log
+stderr_logfile=/data/lwx898295/celery_test/time_sche/celeryd.log
+autostart=true
+autorestart=true
+startsecs=10
+
+[supervisord]
+********************************  03、supervisord配置如下  *******************************
+supervisord -c supervisord.conf
+
+3、基础调试命令如下：
+/opt/buildtools/python/bin/celery -A cele worker -l INFO -B --logfile=crontablog.log
+
+4、定时语法和管理
