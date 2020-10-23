@@ -33,6 +33,39 @@
 
 02、type object 和 class之间的关系
     --type  和 isinstance
+        # 解析剥离 type(变量名) 中内置类型名称
+        def type_parse(type_str):
+            return type_str.strip().strip('<').strip('>').strip('class').strip().strip('\'')
+
+        # 打印变量类型 type
+        a = 12
+        print(type(a))
+        print(type(type_parse))
+
+        # 使用type并进行逻辑判断
+        """
+            使用 type() 做逻辑判断 
+                --if
+                --try  catch
+                --assert
+        """
+        print(type_parse(str(type(a))) == 'int')
+
+        # 使用isinstance()，直接判断变量类型
+        print(isinstance(a, int))
+        print(isinstance(a, (int, str, list)))
+
+        # 使用isinstance 和 type的区别: type检查对象类型时不会检查父类，isinstance会检查父类
+        class A:
+            pass
+
+        class B(A):
+            pass
+
+        print(isinstance(A(), A))    # returns True
+        print(type(A()) == A)        # returns True
+        print(isinstance(B(), A))    # returns True
+        print(type(B()) == A)        # returns False
     
     --map：单个参数和多个参数传递
         # map函数只需要传入一个参数时
