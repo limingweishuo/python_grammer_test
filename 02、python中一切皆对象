@@ -1,0 +1,54 @@
+01、python中一切皆对象比java更加彻底
+    --函数  类  模块  脚本都是，java中类实例化才是对象这是不一样的
+    --python中类可以理解为一个模板，对象可以视为一个模板对象
+    --python中函数和类可以视为一等公民，一等公民可以做什么事情：
+        --赋值给一个变量
+        def person():
+            print("This is Bobby")
+
+        class Person(object):
+            def __init__(self):
+                print("This is Bobby")
+
+        # 函数直接赋给变量
+        my_exam01 = person()
+
+        # 类直接赋给对象
+        my_exam02 = Person
+        my_exam02()
+        
+        --可以添加到集合对象中，这个非常好理解就不演示了
+        
+        --函数和类可以作为参数传递给函数
+        --可以当作函数的返回值
+        def person(name='Bobby'):
+            print(name)
+
+        def dec_get(kwarge):
+            print('This is decorator')
+            return kwarge
+
+        get_out = dec_get(person)
+        get_out('Tom')
+
+02、type object 和 class之间的关系
+    --type  和 isinstance
+    
+    --map：单个参数和多个参数传递
+        # map函数只需要传入一个参数时
+        name_list = ['liming', 'bingkun', 'yule', 'chucc']
+        def show(name):
+            return name + ' + ' + '1010-2020-1819'
+
+        for i in map(show, name_list):
+            print(i)
+
+        # map函数传入多个参数时，记住分开传递参数
+        a_list = [1, 2, 3, 4]
+        b_list = [10, 11, 12, 13]
+        def add(a, b):
+            return (a+b)
+
+        for j in map(add, a_list, b_list):
+            print(j)
+
