@@ -31,7 +31,7 @@
         get_out = dec_get(person)
         get_out('Tom')
 
-02、type object 和 class之间的关系
+02、type map object 和 class之间的关系
     --type  和 isinstance
         # 解析剥离 type(变量名) 中内置类型名称
         def type_parse(type_str):
@@ -85,3 +85,44 @@
         for j in map(add, a_list, b_list):
             print(j)
 
+    --type object 基类之间关系的分析
+        # 打印变量类型 和 类型的类型
+        # 变量-->内置类型--><class 'type'>
+        a = 12
+        print(type(a))  # return  <class 'int'>
+        print(type(int))  # return  <class 'type'>
+
+        b_list = [1, 2, 3]
+        print(type(b_list))  # return  <class 'list'>
+        print(type(list))  # return  <class 'type'>
+
+
+        # 打印基类
+        class Student():
+            pass
+
+        class MyStudent(Student):
+            pass
+
+        print(Student.__bases__)  # return  (<class 'object'>,)
+        print(MyStudent.__bases__)  # return  (<class '__main__.Student'>,)
+        print(type(Student))  # return  <class 'type'>
+        print(type(MyStudent))  # return  <class 'type'>
+
+        # 神奇的是：type 、 object 以及 object的基类
+        # 这里 object的类型为type，但是没有父类。type的类型是type，父类是object
+        print(type(type))  # return  <class 'type'>
+        print(type.__bases__)  # return  (<class 'object'>,)
+        print(type(object))  # return  <class 'type'>
+        print(object.__bases__)  # return  ()
+
+03、python的内置类型：讲解魔法函数的时候就可以对应起来
+    对象的三个特征：身份--id(对象)：查询对象地址  类型  值
+        --None：全局只有一个
+        --数值：
+        --迭代类型：
+        --序列类型：
+        --映射(dict)：
+        --集合
+        --上下文管理器类型：
+        --其他：
