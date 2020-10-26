@@ -118,11 +118,23 @@
 
 03、python的内置类型：讲解魔法函数的时候就可以对应起来
     对象的三个特征：身份--id(对象)：查询对象地址  类型  值
-        --None：全局只有一个
-        --数值：
-        --迭代类型：
-        --序列类型：
-        --映射(dict)：
-        --集合
-        --上下文管理器类型：
+        --None：全局只有一个，在代码启动的时候python会申明一个None变量，所有在python代码中的None变量都指向这个变量
+            a = None
+            b = None
+            id(a) == id(b)
+        --数值：int  float  complex  bool
+        --迭代类型：迭代器和生成器
+        --序列类型：list  bytes  bytearray  memoryview  range  tuple  str  array  
+        --映射(dict)：key: value
+        --集合: set  frozenset【元素不可更改，且实现原理和dict一致，速度很快】
+        --上下文管理器类型：with
         --其他：
+            --模块类型
+            --class和实例
+            --函数类型
+            --方法类型
+            --代码类型
+            --object对象
+            --type类型
+            --ellipsis类型
+            --notimplemented类对象
